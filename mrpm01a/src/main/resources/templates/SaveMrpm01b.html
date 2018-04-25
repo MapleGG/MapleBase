@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="js/side.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+ <link rel="stylesheet" type="text/css" href="css/public.css" />
+ <style>  
+
+#all{  
+    margin:260px auto;  
+    width:500px; /* 必须制定宽度 */  
+    height:500px;  
+ 
+} 
+.error{
+	color:red;
+} 
+.mos{
+	color:red;
+}
+#div{
+	width:300px;
+	height:60px;
+	color:white;
+	padding-left: 240px;
+}
+#div img{
+	padding-bottom: 10px;
+}
+#title{
+	font-size: 30px;
+}
+</style> 
+<script type="text/javascript">
+
+	
+	$(document).ready(function() {
+		$("#mos").focus().blur(function() {
+			//alert($(this).val());checkMos
+			if ($(this).val() != '') {
+				var mos = $("#mos").val();
+				//alert(mos);
+				$.ajax({
+					url : "/checkMos",
+					dataType : "json",
+					type : 'POST',
+					data : {
+						mos1 : mos
+					//传入的数据
+					},
+					success : function(result) {
+						var data1=result.mesg;
+						//alert(data1);
+						switch (data1) {
+						case "NG":
+							data1 = "工单错误";
+							break;
+						default:
+							ok1 = true;
+						}
+						$(".mos").show();
+						$(".mos").text(data1);
+
+					},
+					error : function(data1, XMLHttpRequest, textStatus, errorThrown) {
+						alert("失败");
+					}
+				});
+
+			} else {
+				$(".mos").show();
+				$(".mos").text("请输入工单!!");
+			}
+		});
+
+	});
+</script>
+<script src="/layui/layui.js"></script>
+
+</head>
+<body background="img/a.png" >
+
+<form class="layui-form" nctype="multipart/form-data" method="post" onkeydown="if(event.keyCode==13)return false;" id="all" action="/SaveMrpm01a">
+ 	 <div id="div"> 
+ 	 <!-- <img alt="scd" widht="70" height="30" src="img/233.png"> -->	 
+	<span id="title">xx程式</span>
+	</div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">工单</label>
+    <div class="layui-input-block">
+      <input type="text" name="MRPM01B_MOS" id="mos" required   lay-verify="required" placeholder="请输入工单" autocomplete="off" class="layui-input">
+    	<span class="mos"></span>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">制程</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="MRPM01B_SMT1" title="SMT">
+      <input type="checkbox" name="MRPM01B_DIN1" title="DIN">
+      <input type="checkbox" name="MRPM01B_DTE1" title="DTE">
+      <input type="checkbox" name="MRPM01B_DPK1" title="DPK">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">生产厂别</label>
+    <div class="layui-input-block">
+      <select name="MRPM01B_FAC" lay-verify="required">
+        <option value=""></option>
+        <option value="一厂">一厂</option>
+        <option value="二厂">二厂</option>
+        <option value="三厂">三厂</option>
+
+      </select>
+    </div>
+    <span class="error" th:text="${error}" ></span>
+  </div>
+  
+ 
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" type="submit" lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+});
+</script>
+
+</body>
+</html>

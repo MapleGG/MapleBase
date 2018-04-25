@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="js/side.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+<!-- <script type="text/javascript">
+$(document).ready(function(){ 
+	  
+	 alert(1);
+});
+</script> -->
+<script src="/layui/layui.js"></script>
+
+</head>
+<body>
+
+<!-- <table class="layui-table" lay-data="{height:315, page:true, url:'/empAll.do',  id:'test'}" lay-filter="test">
+  <thead>
+    <tr>
+      <th lay-data="{field: 'EMPLOYEE_CODE', title: 'ID', width:80, sort: true}"></th>
+      <th lay-data="{field: 'employee_name', title: '用户名', width:80}"></th>
+      <th lay-data="{field: 'EMPLOYEE_TITLE', title: '职位', width:80}"></th>
+      <th lay-data="{field: 'EMPLOYEE_LINE', title: '部门', width: 177}"></th>
+      <th lay-data="{field: 'EMPLOYEE_SEX', title: '性别', width: 80, sort: true}"></th>
+      <th lay-data="{field: 'EMPLOYEE_PROVINCE', title: '籍贯', width: 80, sort: true}"></th>
+      <th lay-data="{field: 'EMPLOYEE_VOLK', title: '民族', width: 80}"></th>
+      <th lay-data="{field: 'EMPLOYEE_EDUCATION', title: '学籍', width: 135, sort: true}"></th>
+
+    </tr>
+  </thead>
+</table> -->
+
+
+ 	<table class="layui-table" id="demo"  lay-filter="test"></table>
+ <script th:inline="none">
+
+layui.use(['table','laypage','laydate'], function(){
+  var table = layui.table;
+  laydate=layui.laydate,  
+  laypage = layui.laypage;
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 315
+    ,url: '/empAll.do' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'EMPLOYEE_CODE', title: 'ID', width:80, sort: true, fixed: 'left'}
+      ,{field: 'employee_name', title: '用户名', width:80}
+      ,{field: 'EMPLOYEE_TITLE', title: '职位', width:80} 
+      ,{field: 'EMPLOYEE_LINE', title: '部门', width: 177}
+      ,{field: 'EMPLOYEE_SEX', title: '性别', width: 80, sort: true}
+      ,{field: 'EMPLOYEE_PROVINCE', title: '籍贯', width: 80, sort: true}
+      ,{field: 'EMPLOYEE_VOLK', title: '民族', width: 80}
+      ,{field: 'EMPLOYEE_EDUCATION', title: '学籍', width: 135, sort: true}
+    ]]
+  });
+  
+});
+</script> 
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scd.mrpm01b.mapper.Mrpm01bMapper">
+
+    <resultMap id="resultMap" type="com.scd.mrpm01b.entity.Mrpm01a" >
+
+        <result column="MEAL01_ID"  property="meal01Id"/>
+         <result   column="MEAL01_EMP"  property="meal01Emp"/>
+        <result column="MEAL01_MEALDATE"  property="meal01MealDate"></result>
+       <result column="MEAL01_TYPE"  property="meal01Type"></result>
+       <result column="MEAL01_CHOICE"  property="meal01Choice"></result>
+       <result column="MEAL01_DATE"  property="meal01Date"></result>
+        <result column="ATTRIBUTE01"  property="attribute01"></result>
+            <result column="ATTRIBUTE02"  property="attribute02"></result>
+        <result column="ATTRIBUTE03"  property="attribute03"></result>
+        <result column="ATTRIBUTE04"  property="attribute04"></result>
+        <result column="ATTRIBUTE05"  property="attribute05"></result>
+        <result column="CREATED_BY"  property="createdBy"></result>
+        <result column="CREATETION_DATE"  property="createtionDate"></result>
+       <result column="UPDATED_BY"  property="updatedBy"></result>
+    <result column="UPDATE_DATE"  property="updateDate"></result>
+    </resultMap>
+
+    
+
+    
+    <insert id="insert" >
+        insert into MEAL01
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+
+            <if test="meal01Emp != null">
+                MEAL01_EMP,
+            </if>
+            <if test="meal01MealDate != null">
+                MEAL01_MEALDATE,
+            </if>
+            <if test="meal01Type != null">
+                MEAL01_TYPE ,
+            </if>
+            <if test="meal01Choice != null">
+                MEAL01_CHOICE,
+            </if>
+            <if test="meal01Date != null">
+                MEAL01_DATE,
+            </if>
+            <if test="attribute01 != null">
+                ATTRIBUTE01,
+            </if>
+            <if test="attribute02 != null">
+                ATTRIBUTE02,
+            </if>
+            <if test="attribute03 != null">
+                ATTRIBUTE03,
+            </if>
+            <if test="attribute04 != null">
+                ATTRIBUTE04,
+            </if>
+            <if test="attribute05 != null">
+                ATTRIBUTE05,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+            <if test="createtionDate != null">
+                CREATETION_DATE,
+            </if>
+
+            <if test="updatedBy != null">
+                UPDATED_BY,
+            </if>
+
+            <if test="updateDate != null">
+                UPDATE_DATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="meal01Emp != null">
+                #{meal01Emp,jdbcType=VARCHAR},
+            </if>
+
+            <if test="meal01MealDate != null">
+                #{meal01MealDate,jdbcType=VARCHAR},
+            </if>
+
+            <if test="meal01Type != null">
+                #{meal01Type,jdbcType=VARCHAR},
+            </if>
+
+            <if test="meal01Choice != null">
+                #{meal01Choice,jdbcType=VARCHAR},
+            </if>
+            <if test="meal01Date != null">
+                #{meal01Date,jdbcType=VARCHAR},
+            </if>
+
+            <if test="attribute01 != null">
+                #{attribute01,jdbcType=VARCHAR},
+            </if>
+
+            <if test="attribute02 != null">
+                #{attribute02,jdbcType=DATE},
+            </if>
+
+            <if test="attribute03 != null">
+                #{attribute03,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute04 != null">
+                #{attribute04,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute05 != null">
+                #{attribute05,jdbcType=VARCHAR},
+            </if>
+
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+
+            <if test="createtionDate != null">
+                TO_DATE(#{createtionDate,jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+
+
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=VARCHAR},
+            </if>
+
+            <if test="updateDate != null">
+                TO_DATE(#{updateDate,jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+        </trim>
+    </insert>
+
+
+
+</mapper>

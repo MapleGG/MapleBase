@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+<script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="./layui/css/layui.css" media="all"/>
+
+<script src="./layui/layui.js"></script>
+<style type="text/css">
+	#addmain {
+        display: none;
+    }
+    #updatemain{
+    	display: none;
+    }
+    #querymain{
+     display: none;
+    }
+    
+    #addmain input{
+    	float:right;
+    }
+    #addmain span{
+    	float:left ;
+    	
+    }
+    #updatemain input{
+    	float:right;
+    }
+    #updatemain span{
+    	float:left ;
+    	
+    }
+    #querymain input{
+    	float:right;
+    }
+    #querymain span{
+    	float:left ;
+    	
+    }
+    table {
+	/* text */
+	font-family: "Arial","Sans-Serif","宋体";
+        /* back */
+        background-color:#FFFFFF;
+}
+thead tr th,
+thead tr td
+{
+	/* appearance */
+	background-color: #0000AA;
+	/* text */
+	color: #FFFFFF;
+	font-size: 14px;
+        text-align:center;
+	font-weight: bold;
+        /* appearance */
+	border: 1px solid #EAEAEA;
+	padding: 2px;
+}
+tbody td {
+	/* appearance */
+	solid #EAEAEA;
+	/* size */
+	padding: 2px;
+        font-size: 12px;
+}
+
+.myTable thead tr th,
+.myTable thead tr td
+{
+	/* appearance */
+	background-color: #0000AA;
+	/* text */
+	color: #FFFFFF;
+	font-size: 14px;
+        text-align:center;
+	font-weight: bold;
+        /* appearance */
+	border: 1px solid #EAEAEA;
+	padding: 4px;
+}
+.myTable td {
+	/* appearance */
+	solid #EAEAEA;
+	/* size */
+	padding: 2px;
+        font-size: 12px;
+}
+.myTable {
+	/* text */
+	font-family: "Arial","Sans-Serif","宋体";
+	border: 1px solid #00ff00;
+}
+ #forms{
+ 	margin-left: 25%;
+ 	margin-top: 1%;
+ 	font-family: "Arial","Sans-Serif","宋体";
+ } 
+ .layui-body{overflow-y: scroll;}  
+    
+</style>
+</head>
+<body>
+
+<!--  监听事件失效-->
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+</script>
+ <div class="demoTable" id="forms">
+<h2> 搜索条件：
+    <select id="op" style="width:120px;height:30px;font-size: 16px" >
+      <option value="ma00">选择查询条件</option>
+       <option value="ma08">成品料号</option>
+		<option value="ma01">工单单别</option>
+		<option value="ma02">工单单号</option>
+      </select>
+	  <div class="layui-inline" >
+	    <input class="layui-input" style="width:500px;height:30px;" name="id" id="demoReload" autocomplete="off"></input>
+	  </div>
+  <button class="layui-btn" data-type="reload">查找</button>
+ </h2>
+</div> 
+
+	<table class="layui-table myTable"  id="datatable" lay-filter="test"></table>
+<script th:inline="none">
+
+layui.use('table', function(){
+	
+  var table = layui.table;
+  laydate=layui.laydate,  
+  laypage = layui.laypage;
+  //第一个实例
+  table.render({
+    elem: '#datatable'
+    ,height:'full-200'
+    ,method:'post'
+    //,url: './findAllorById' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+		{field: 'EMP_ONCLICK_ID',  title: 'ID', width:50, sort: true ,fixed: true}
+      ,{field: 'EMP_ONCLICK_CODE', title: '工号', width:90,fixed: true}
+      ,{field: 'EMP_ONCLICK_TIME', title: '打卡时间', width:150,fixed: true} 
+      ,{field: 'ATTRIBUTE01', title: '类别', width: 90}
+      ,{field: 'ATTRIBUTE02', title: '原因', width: 90}
+      ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+    ]]
+  ,id: 'testReload'//这个id是数据重载时调用的
+  });
+//监听表格复选框选择
+ /*  table.on('checkbox(datatable)', function(obj){
+	  console.log("=================================")
+    console.log(obj)
+  }); */
+  //监听工具条   
+  table.on('tool(test)', function(obj){
+	  
+    var data = obj.data;
+    var layEvent=obj.event;
+     if(layEvent === 'edit'){
+      layer.alert('编辑行：<br>'+ JSON.stringify(data))
+      if(data[0].ma01 != "" && data[0].ma01 != null){
+	  		document.getElementById("ma01u").value = data[0].ma01;
+	  	}
+	  	if(data[0].ma02 != "" && data[0].ma02 != null){
+	  		document.getElementById("ma02u").value = data[0].ma02;
+	  	}
+	  	if(data[0].ma03 != "" && data[0].ma03 != null){
+	  		document.getElementById("ma03u").value = data[0].ma03;
+	  	}
+	  	if(data[0].ma04 != "" && data[0].ma04 != null){
+	  		document.getElementById("ma04u").value = data[0].ma04;
+	  	}
+	  	if(data[0].ma08 != "" && data[0].ma08 != null){
+	  		document.getElementById("ma08u").value = data[0].ma08;
+	  	}
+	  	if(data[0].ma10 != "" && data[0].ma10 != null){
+	  		document.getElementById("ma10u").value = data[0].ma10;
+	  	}
+	  	if(data[0].ma11 != "" && data[0].ma11 != null){
+	  		document.getElementById("ma11u").value = data[0].ma11;
+	  	}
+	  	if(data[0].ma12 != "" && data[0].ma12 != null){
+	  		document.getElementById("ma12u").value = data[0].ma12;
+	  	}
+	  	if(data[0].ma14 != "" && data[0].ma14 != null){
+	  		document.getElementById("ma14u").value = data[0].ma14;
+	  	}
+	  	if(data[0].ma16 != "" && data[0].ma16 != null){
+	  		document.getElementById("ma16u").value = data[0].ma16;
+	  	}
+	  	if(data[0].ma15 != "" && data[0].ma15 != null){
+	  		document.getElementById("ma15u").value = data[0].ma15;
+	  	}
+	  	if(data[0].ma09 != "" && data[0].ma09 != null){
+	  		document.getElementById("ma09u").value = data[0].ma09;
+	  	}
+	  	if(data[0].ma38 != "" && data[0].ma38 != null){
+	  		document.getElementById("ma38u").value = data[0].ma38;
+	  	}
+	  	if(data[0].ma35 != "" && data[0].ma35 != null){
+	  		document.getElementById("ma35u").value = data[0].ma35;
+	  	}
+	  	if(data[0].ma05 != "" && data[0].ma05 != null){
+	  		document.getElementById("ma05u").value = data[0].ma05;
+	  	}
+	  	if(data[0].ma06 != "" && data[0].ma06  != null){
+	  		document.getElementById("ma06u").value = data[0].ma06;
+	  	}
+	  	if(data[0].ma07 != "" && data[0].ma07 != null){
+	  		document.getElementById("ma07u").value = data[0].ma07;
+	  	}
+	  	if(data[0].ma39 !="" && data[0].ma39 != null){
+	  		document.getElementById("ma39u").value = data[0].ma39;
+	  	}
+	  	if(data[0].ma18 !="" && data[0].ma18 != null){
+	  		document.getElementById("ma18u").value = data[0].ma18;
+	  	}
+    
+	  layer.open({
+          type: 1,
+          title: '用户信息',
+          area: ['700px', '700px'],
+          shadeClose: false, //点击遮罩关闭
+          content: $('#updatemain'),
+          btn: ['确定', '取消'],
+          yes: function (index, layero) {//修改信息
+            
+                  $("#form1").submit();
+          },
+          btn2: function (index, layero) {
+              return;
+          },
+          cancel: function () {
+              return;
+          },
+          end: function () {
+              $('#updatemain').css("display", "none");
+          }
+      });
+    }
+  }); 
+ 
+	
+  var $ = layui.$, active = {
+		 reload: function(){
+			      var demoReload = $('#demoReload');
+			      var op = $('#op');
+			      //执行重载
+			      table.reload('testReload', {
+			        page: {
+			          curr: 1 //重新从第 1 页开始
+			        }
+			        ,where: {
+			          key: {
+			            val: demoReload.val()
+			            ,op:op.val()
+			          }
+			        }
+			      });
+			    }
+		  };
+  $('.demoTable .layui-btn').on('click', function(){
+	    var type = $(this).data('type');
+	    active[type] ? active[type].call(this) : '';
+	  });
+	
+});
+
+</script>
+    <form action="./update1" id="form1">
+    <!-- 修改弹窗 -->
+    <div id="updatemain">
+       
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>工单单号(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma02" id="ma02u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>生产库别(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma03" id="ma03u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>生产线别(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma04" id="ma04u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>成品料号(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma08" id="ma08u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>有效日期(<label style="color: red">*</label>)：<input type="date" style="width:500px;height:30px;" name="ma10" id="ma10u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>预计生产量(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma11" id="ma11u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>已生产量(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma12" id="ma12u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>开单日期(<label style="color: red">*</label>)：<input type="date" style="width:500px;height:30px;" name="ma14" id="ma14u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>预计开工日(<label style="color: red">*</label>)：<input type="date" style="width:500px;height:30px;" name="ma16" id="ma16u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>备料日期(<label style="color: red">*</label>)：<input type="date" style="width:500px;height:30px;" name="ma15" id="ma15u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>预计完成日(<label style="color: red">*</label>)：<input type="date" style="width:500px;height:30px;" name="ma09" id="ma09u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>组织(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma38" id="ma38u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:40px;">
+            <lable>客户订单(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma35" id="ma35u"></lable>
+        </div>
+     
+        <div style="padding:10px;padding-left:60px;padding-top:20px;">
+            <lable>销售单单别(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma05" id="ma05u"></lable>
+        </div>
+
+        <div style="padding:10px;padding-left:60px;padding-top:20px;">
+            <lable>销售单单号(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma06" id="ma06u"></lable>
+        </div>
+        
+        <div style="padding:10px;padding-left:60px;padding-top:20px;">
+            <lable>销售单序号(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma07" id="ma07u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;padding-top:20px;">
+            <lable>制程代号(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma39" id="ma39u"></lable>
+        </div>
+        <div style="padding:10px;padding-left:60px;;padding-top:20px;">
+        	 
+        	 <lable>备注(<label style="color: red">*</label>)：<input type="text" style="width:500px;height:30px;" name="ma18" id="ma18u"></lable>
+            
+        </div>
+    </div>
+    </form>
+</body>
+</html>

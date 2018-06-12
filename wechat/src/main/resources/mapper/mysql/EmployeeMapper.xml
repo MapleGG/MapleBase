@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scd.wechat.mapper.mysql.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.scd.wechat.entity.Employee">
+    <id column="EMPLOYEE_ID" jdbcType="INTEGER" property="employeeId" />
+    <result column="EMPLOYEE_CODE" jdbcType="VARCHAR" property="employeeCode" />
+    <result column="employee_name" jdbcType="VARCHAR" property="employeeName" />
+    <result column="EMPLOYEE_TITLE" jdbcType="VARCHAR" property="employeeTitle" />
+    <result column="DEPT_ID" jdbcType="INTEGER" property="deptId" />
+    <result column="DEPT_LINE" jdbcType="VARCHAR" property="deptLine" />
+    <result column="ADMIN_ID" jdbcType="INTEGER" property="adminId" />
+    <result column="EMPLOYEE_INDATE" jdbcType="DATE" property="employeeIndate" />
+    <result column="EMPLOYEE_DEPT_DATE" jdbcType="DATE" property="employeeDeptDate" />
+    <result column="EMPLOYEE_OUTDATE" jdbcType="DATE" property="employeeOutdate" />
+    <result column="EMPLOYEE_SCODE" jdbcType="VARCHAR" property="employeeScode" />
+    <result column="EMPLOYEE_BIRTH" jdbcType="DATE" property="employeeBirth" />
+    <result column="EMPLOYEE_SEX" jdbcType="VARCHAR" property="employeeSex" />
+    <result column="EMPLOYEE_EDUCATION" jdbcType="VARCHAR" property="employeeEducation" />
+    <result column="EMPLOYEE_STUDY" jdbcType="VARCHAR" property="employeeStudy" />
+    <result column="EMPLOYEE_PROVINCE" jdbcType="VARCHAR" property="employeeProvince" />
+    <result column="EMPLOYEE_VOLK" jdbcType="VARCHAR" property="employeeVolk" />
+    <result column="EMPLOYEE_ADDR" jdbcType="VARCHAR" property="employeeAddr" />
+    <result column="EMPLOYEE_BID" jdbcType="VARCHAR" property="employeeBid" />
+    <result column="EMPLOYEE_JOB_DESC" jdbcType="VARCHAR" property="employeeJobDesc" />
+    <result column="EMPLOYEE_ACCT" jdbcType="VARCHAR" property="employeeAcct" />
+    <result column="EMPLOYEE_PASSWORD" jdbcType="VARCHAR" property="employeePassword" />
+    <result column="EMP_EDU_GP1" jdbcType="VARCHAR" property="empEduGp1" />
+    <result column="EMP_EDU_GP2" jdbcType="VARCHAR" property="empEduGp2" />
+    <result column="EMP_EDU_GP3" jdbcType="VARCHAR" property="empEduGp3" />
+    <result column="EMP_EDU_GP4" jdbcType="VARCHAR" property="empEduGp4" />
+    <result column="EMP_EDU_GP5" jdbcType="VARCHAR" property="empEduGp5" />
+    <result column="EMP_EDU_GP6" jdbcType="VARCHAR" property="empEduGp6" />
+    <result column="EMP_EDU_GP7" jdbcType="VARCHAR" property="empEduGp7" />
+    <result column="EMP_EDU_GP8" jdbcType="VARCHAR" property="empEduGp8" />
+    <result column="EMP_EDU_GP9" jdbcType="VARCHAR" property="empEduGp9" />
+    <result column="EMP_EDU_GP10" jdbcType="VARCHAR" property="empEduGp10" />
+    <result column="level_GMO" jdbcType="VARCHAR" property="levelGmo" />
+    <result column="level_PRD" jdbcType="VARCHAR" property="levelPrd" />
+    <result column="level_ENG" jdbcType="VARCHAR" property="levelEng" />
+    <result column="level_QC" jdbcType="VARCHAR" property="levelQc" />
+    <result column="level_PC" jdbcType="VARCHAR" property="levelPc" />
+    <result column="level_MC" jdbcType="VARCHAR" property="levelMc" />
+    <result column="level_HR" jdbcType="VARCHAR" property="levelHr" />
+    <result column="level_PUR" jdbcType="VARCHAR" property="levelPur" />
+    <result column="level_SALES" jdbcType="VARCHAR" property="levelSales" />
+    <result column="level_RD" jdbcType="VARCHAR" property="levelRd" />
+    <result column="level_RMA" jdbcType="VARCHAR" property="levelRma" />
+    <result column="level_FNA" jdbcType="VARCHAR" property="levelFna" />
+    <result column="level_COST" jdbcType="VARCHAR" property="levelCost" />
+    <result column="level_OTHER" jdbcType="VARCHAR" property="levelOther" />
+    <result column="level_MIS" jdbcType="VARCHAR" property="levelMis" />
+    <result column="employee_PHOTO" jdbcType="VARCHAR" property="employeePhoto" />
+    <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="employee_ip" jdbcType="VARCHAR" property="employeeIp" />
+    <result column="employee_onjob_date" jdbcType="TIMESTAMP" property="employeeOnjobDate" />
+    <result column="EMPLOYEE_PHONE" jdbcType="VARCHAR" property="employeePhone" />
+    <result column="employee_wechatid" jdbcType="VARCHAR" property="employeeWechatid"/>
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.scd.wechat.entity.Employee">
+    <result column="employee_EXPERIENCE" jdbcType="LONGVARCHAR" property="employeeExperience" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EMPLOYEE_ID, EMPLOYEE_CODE, employee_name, EMPLOYEE_TITLE, DEPT_ID, DEPT_LINE, ADMIN_ID, 
+    EMPLOYEE_INDATE, EMPLOYEE_DEPT_DATE, EMPLOYEE_OUTDATE, EMPLOYEE_SCODE, EMPLOYEE_BIRTH, 
+    EMPLOYEE_SEX, EMPLOYEE_EDUCATION, EMPLOYEE_STUDY, EMPLOYEE_PROVINCE, EMPLOYEE_VOLK, 
+    EMPLOYEE_ADDR, EMPLOYEE_BID, EMPLOYEE_JOB_DESC, EMPLOYEE_ACCT, EMPLOYEE_PASSWORD, 
+    EMP_EDU_GP1, EMP_EDU_GP2, EMP_EDU_GP3, EMP_EDU_GP4, EMP_EDU_GP5, EMP_EDU_GP6, EMP_EDU_GP7, 
+    EMP_EDU_GP8, EMP_EDU_GP9, EMP_EDU_GP10, level_GMO, level_PRD, level_ENG, level_QC, 
+    level_PC, level_MC, level_HR, level_PUR, level_SALES, level_RD, level_RMA, level_FNA, 
+    level_COST, level_OTHER, level_MIS, employee_PHOTO, creation_date, created_by, last_update_date, 
+    last_updated_by, employee_ip, employee_onjob_date, EMPLOYEE_PHONE
+  </sql>
+  <sql id="Blob_Column_List">
+    employee_EXPERIENCE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from employee
+    where EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employee
+    where EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.scd.wechat.entity.Employee">
+    insert into employee (EMPLOYEE_ID, EMPLOYEE_CODE, employee_name, 
+      EMPLOYEE_TITLE, DEPT_ID, DEPT_LINE, 
+      ADMIN_ID, EMPLOYEE_INDATE, EMPLOYEE_DEPT_DATE, 
+      EMPLOYEE_OUTDATE, EMPLOYEE_SCODE, EMPLOYEE_BIRTH, 
+      EMPLOYEE_SEX, EMPLOYEE_EDUCATION, EMPLOYEE_STUDY, 
+      EMPLOYEE_PROVINCE, EMPLOYEE_VOLK, EMPLOYEE_ADDR, 
+      EMPLOYEE_BID, EMPLOYEE_JOB_DESC, EMPLOYEE_ACCT, 
+      EMPLOYEE_PASSWORD, EMP_EDU_GP1, EMP_EDU_GP2, 
+      EMP_EDU_GP3, EMP_EDU_GP4, EMP_EDU_GP5, 
+      EMP_EDU_GP6, EMP_EDU_GP7, EMP_EDU_GP8, 
+      EMP_EDU_GP9, EMP_EDU_GP10, level_GMO, 
+      level_PRD, level_ENG, level_QC, 
+      level_PC, level_MC, level_HR, 
+      level_PUR, level_SALES, level_RD, 
+      level_RMA, level_FNA, level_COST, 
+      level_OTHER, level_MIS, employee_PHOTO, 
+      creation_date, created_by, last_update_date, 
+      last_updated_by, employee_ip, employee_onjob_date, 
+      EMPLOYEE_PHONE, employee_EXPERIENCE)
+    values (#{employeeId,jdbcType=INTEGER}, #{employeeCode,jdbcType=VARCHAR}, #{employeeName,jdbcType=VARCHAR}, 
+      #{employeeTitle,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, #{deptLine,jdbcType=VARCHAR}, 
+      #{adminId,jdbcType=INTEGER}, #{employeeIndate,jdbcType=DATE}, #{employeeDeptDate,jdbcType=DATE}, 
+      #{employeeOutdate,jdbcType=DATE}, #{employeeScode,jdbcType=VARCHAR}, #{employeeBirth,jdbcType=DATE}, 
+      #{employeeSex,jdbcType=VARCHAR}, #{employeeEducation,jdbcType=VARCHAR}, #{employeeStudy,jdbcType=VARCHAR}, 
+      #{employeeProvince,jdbcType=VARCHAR}, #{employeeVolk,jdbcType=VARCHAR}, #{employeeAddr,jdbcType=VARCHAR}, 
+      #{employeeBid,jdbcType=VARCHAR}, #{employeeJobDesc,jdbcType=VARCHAR}, #{employeeAcct,jdbcType=VARCHAR}, 
+      #{employeePassword,jdbcType=VARCHAR}, #{empEduGp1,jdbcType=VARCHAR}, #{empEduGp2,jdbcType=VARCHAR}, 
+      #{empEduGp3,jdbcType=VARCHAR}, #{empEduGp4,jdbcType=VARCHAR}, #{empEduGp5,jdbcType=VARCHAR}, 
+      #{empEduGp6,jdbcType=VARCHAR}, #{empEduGp7,jdbcType=VARCHAR}, #{empEduGp8,jdbcType=VARCHAR}, 
+      #{empEduGp9,jdbcType=VARCHAR}, #{empEduGp10,jdbcType=VARCHAR}, #{levelGmo,jdbcType=VARCHAR}, 
+      #{levelPrd,jdbcType=VARCHAR}, #{levelEng,jdbcType=VARCHAR}, #{levelQc,jdbcType=VARCHAR}, 
+      #{levelPc,jdbcType=VARCHAR}, #{levelMc,jdbcType=VARCHAR}, #{levelHr,jdbcType=VARCHAR}, 
+      #{levelPur,jdbcType=VARCHAR}, #{levelSales,jdbcType=VARCHAR}, #{levelRd,jdbcType=VARCHAR}, 
+      #{levelRma,jdbcType=VARCHAR}, #{levelFna,jdbcType=VARCHAR}, #{levelCost,jdbcType=VARCHAR}, 
+      #{levelOther,jdbcType=VARCHAR}, #{levelMis,jdbcType=VARCHAR}, #{employeePhoto,jdbcType=VARCHAR}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
+      #{lastUpdatedBy,jdbcType=VARCHAR}, #{employeeIp,jdbcType=VARCHAR}, #{employeeOnjobDate,jdbcType=TIMESTAMP}, 
+      #{employeePhone,jdbcType=VARCHAR}, #{employeeExperience,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scd.wechat.entity.Employee">
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="employeeId != null">
+        EMPLOYEE_ID,
+      </if>
+      <if test="employeeCode != null">
+        EMPLOYEE_CODE,
+      </if>
+      <if test="employeeName != null">
+        employee_name,
+      </if>
+      <if test="employeeTitle != null">
+        EMPLOYEE_TITLE,
+      </if>
+      <if test="deptId != null">
+        DEPT_ID,
+      </if>
+      <if test="deptLine != null">
+        DEPT_LINE,
+      </if>
+      <if test="adminId != null">
+        ADMIN_ID,
+      </if>
+      <if test="employeeIndate != null">
+        EMPLOYEE_INDATE,
+      </if>
+      <if test="employeeDeptDate != null">
+        EMPLOYEE_DEPT_DATE,
+      </if>
+      <if test="employeeOutdate != null">
+        EMPLOYEE_OUTDATE,
+      </if>
+      <if test="employeeScode != null">
+        EMPLOYEE_SCODE,
+      </if>
+      <if test="employeeBirth != null">
+        EMPLOYEE_BIRTH,
+      </if>
+      <if test="employeeSex != null">
+        EMPLOYEE_SEX,
+      </if>
+      <if test="employeeEducation != null">
+        EMPLOYEE_EDUCATION,
+      </if>
+      <if test="employeeStudy != null">
+        EMPLOYEE_STUDY,
+      </if>
+      <if test="employeeProvince != null">
+        EMPLOYEE_PROVINCE,
+      </if>
+      <if test="employeeVolk != null">
+        EMPLOYEE_VOLK,
+      </if>
+      <if test="employeeAddr != null">
+        EMPLOYEE_ADDR,
+      </if>
+      <if test="employeeBid != null">
+        EMPLOYEE_BID,
+      </if>
+      <if test="employeeJobDesc != null">
+        EMPLOYEE_JOB_DESC,
+      </if>
+      <if test="employeeAcct != null">
+        EMPLOYEE_ACCT,
+      </if>
+      <if test="employeePassword != null">
+        EMPLOYEE_PASSWORD,
+      </if>
+      <if test="empEduGp1 != null">
+        EMP_EDU_GP1,
+      </if>
+      <if test="empEduGp2 != null">
+        EMP_EDU_GP2,
+      </if>
+      <if test="empEduGp3 != null">
+        EMP_EDU_GP3,
+      </if>
+      <if test="empEduGp4 != null">
+        EMP_EDU_GP4,
+      </if>
+      <if test="empEduGp5 != null">
+        EMP_EDU_GP5,
+      </if>
+      <if test="empEduGp6 != null">
+        EMP_EDU_GP6,
+      </if>
+      <if test="empEduGp7 != null">
+        EMP_EDU_GP7,
+      </if>
+      <if test="empEduGp8 != null">
+        EMP_EDU_GP8,
+      </if>
+      <if test="empEduGp9 != null">
+        EMP_EDU_GP9,
+      </if>
+      <if test="empEduGp10 != null">
+        EMP_EDU_GP10,
+      </if>
+      <if test="levelGmo != null">
+        level_GMO,
+      </if>
+      <if test="levelPrd != null">
+        level_PRD,
+      </if>
+      <if test="levelEng != null">
+        level_ENG,
+      </if>
+      <if test="levelQc != null">
+        level_QC,
+      </if>
+      <if test="levelPc != null">
+        level_PC,
+      </if>
+      <if test="levelMc != null">
+        level_MC,
+      </if>
+      <if test="levelHr != null">
+        level_HR,
+      </if>
+      <if test="levelPur != null">
+        level_PUR,
+      </if>
+      <if test="levelSales != null">
+        level_SALES,
+      </if>
+      <if test="levelRd != null">
+        level_RD,
+      </if>
+      <if test="levelRma != null">
+        level_RMA,
+      </if>
+      <if test="levelFna != null">
+        level_FNA,
+      </if>
+      <if test="levelCost != null">
+        level_COST,
+      </if>
+      <if test="levelOther != null">
+        level_OTHER,
+      </if>
+      <if test="levelMis != null">
+        level_MIS,
+      </if>
+      <if test="employeePhoto != null">
+        employee_PHOTO,
+      </if>
+      <if test="creationDate != null">
+        creation_date,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date,
+      </if>
+      <if test="lastUpdatedBy != null">
+        last_updated_by,
+      </if>
+      <if test="employeeIp != null">
+        employee_ip,
+      </if>
+      <if test="employeeOnjobDate != null">
+        employee_onjob_date,
+      </if>
+      <if test="employeePhone != null">
+        EMPLOYEE_PHONE,
+      </if>
+      <if test="employeeExperience != null">
+        employee_EXPERIENCE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeCode != null">
+        #{employeeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null">
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeTitle != null">
+        #{employeeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptLine != null">
+        #{deptLine,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeIndate != null">
+        #{employeeIndate,jdbcType=DATE},
+      </if>
+      <if test="employeeDeptDate != null">
+        #{employeeDeptDate,jdbcType=DATE},
+      </if>
+      <if test="employeeOutdate != null">
+        #{employeeOutdate,jdbcType=DATE},
+      </if>
+      <if test="employeeScode != null">
+        #{employeeScode,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeBirth != null">
+        #{employeeBirth,jdbcType=DATE},
+      </if>
+      <if test="employeeSex != null">
+        #{employeeSex,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeEducation != null">
+        #{employeeEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStudy != null">
+        #{employeeStudy,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeProvince != null">
+        #{employeeProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeVolk != null">
+        #{employeeVolk,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeAddr != null">
+        #{employeeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeBid != null">
+        #{employeeBid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeJobDesc != null">
+        #{employeeJobDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeAcct != null">
+        #{employeeAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePassword != null">
+        #{employeePassword,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp1 != null">
+        #{empEduGp1,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp2 != null">
+        #{empEduGp2,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp3 != null">
+        #{empEduGp3,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp4 != null">
+        #{empEduGp4,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp5 != null">
+        #{empEduGp5,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp6 != null">
+        #{empEduGp6,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp7 != null">
+        #{empEduGp7,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp8 != null">
+        #{empEduGp8,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp9 != null">
+        #{empEduGp9,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp10 != null">
+        #{empEduGp10,jdbcType=VARCHAR},
+      </if>
+      <if test="levelGmo != null">
+        #{levelGmo,jdbcType=VARCHAR},
+      </if>
+      <if test="levelPrd != null">
+        #{levelPrd,jdbcType=VARCHAR},
+      </if>
+      <if test="levelEng != null">
+        #{levelEng,jdbcType=VARCHAR},
+      </if>
+      <if test="levelQc != null">
+        #{levelQc,jdbcType=VARCHAR},
+      </if>
+      <if test="levelPc != null">
+        #{levelPc,jdbcType=VARCHAR},
+      </if>
+      <if test="levelMc != null">
+        #{levelMc,jdbcType=VARCHAR},
+      </if>
+      <if test="levelHr != null">
+        #{levelHr,jdbcType=VARCHAR},
+      </if>
+      <if test="levelPur != null">
+        #{levelPur,jdbcType=VARCHAR},
+      </if>
+      <if test="levelSales != null">
+        #{levelSales,jdbcType=VARCHAR},
+      </if>
+      <if test="levelRd != null">
+        #{levelRd,jdbcType=VARCHAR},
+      </if>
+      <if test="levelRma != null">
+        #{levelRma,jdbcType=VARCHAR},
+      </if>
+      <if test="levelFna != null">
+        #{levelFna,jdbcType=VARCHAR},
+      </if>
+      <if test="levelCost != null">
+        #{levelCost,jdbcType=VARCHAR},
+      </if>
+      <if test="levelOther != null">
+        #{levelOther,jdbcType=VARCHAR},
+      </if>
+      <if test="levelMis != null">
+        #{levelMis,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePhoto != null">
+        #{employeePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedBy != null">
+        #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeIp != null">
+        #{employeeIp,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeOnjobDate != null">
+        #{employeeOnjobDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeePhone != null">
+        #{employeePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeExperience != null">
+        #{employeeExperience,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scd.wechat.entity.Employee">
+    update employee
+    <set>
+      <if test="employeeCode != null">
+        EMPLOYEE_CODE = #{employeeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null">
+        employee_name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeTitle != null">
+        EMPLOYEE_TITLE = #{employeeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        DEPT_ID = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptLine != null">
+        DEPT_LINE = #{deptLine,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null">
+        ADMIN_ID = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeIndate != null">
+        EMPLOYEE_INDATE = #{employeeIndate,jdbcType=DATE},
+      </if>
+      <if test="employeeDeptDate != null">
+        EMPLOYEE_DEPT_DATE = #{employeeDeptDate,jdbcType=DATE},
+      </if>
+      <if test="employeeOutdate != null">
+        EMPLOYEE_OUTDATE = #{employeeOutdate,jdbcType=DATE},
+      </if>
+      <if test="employeeScode != null">
+        EMPLOYEE_SCODE = #{employeeScode,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeBirth != null">
+        EMPLOYEE_BIRTH = #{employeeBirth,jdbcType=DATE},
+      </if>
+      <if test="employeeSex != null">
+        EMPLOYEE_SEX = #{employeeSex,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeEducation != null">
+        EMPLOYEE_EDUCATION = #{employeeEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStudy != null">
+        EMPLOYEE_STUDY = #{employeeStudy,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeProvince != null">
+        EMPLOYEE_PROVINCE = #{employeeProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeVolk != null">
+        EMPLOYEE_VOLK = #{employeeVolk,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeAddr != null">
+        EMPLOYEE_ADDR = #{employeeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeBid != null">
+        EMPLOYEE_BID = #{employeeBid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeJobDesc != null">
+        EMPLOYEE_JOB_DESC = #{employeeJobDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeAcct != null">
+        EMPLOYEE_ACCT = #{employeeAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePassword != null">
+        EMPLOYEE_PASSWORD = #{employeePassword,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp1 != null">
+        EMP_EDU_GP1 = #{empEduGp1,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp2 != null">
+        EMP_EDU_GP2 = #{empEduGp2,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp3 != null">
+        EMP_EDU_GP3 = #{empEduGp3,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp4 != null">
+        EMP_EDU_GP4 = #{empEduGp4,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp5 != null">
+        EMP_EDU_GP5 = #{empEduGp5,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp6 != null">
+        EMP_EDU_GP6 = #{empEduGp6,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp7 != null">
+        EMP_EDU_GP7 = #{empEduGp7,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp8 != null">
+        EMP_EDU_GP8 = #{empEduGp8,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp9 != null">
+        EMP_EDU_GP9 = #{empEduGp9,jdbcType=VARCHAR},
+      </if>
+      <if test="empEduGp10 != null">
+        EMP_EDU_GP10 = #{empEduGp10,jdbcType=VARCHAR},
+      </if>
+      <if test="levelGmo != null">
+        level_GMO = #{levelGmo,jdbcType=VARCHAR},
+      </if>
+      <if test="levelPrd != null">
+        level_PRD = #{levelPrd,jdbcType=VARCHAR},
+      </if>
+      <if test="levelEng != null">
+        level_ENG = #{levelEng,jdbcType=VARCHAR},
+      </if>
+      <if test="levelQc != null">
+        level_QC = #{levelQc,jdbcType=VARCHAR},
+      </if>
+      <if test="levelPc != null">
+        level_PC = #{levelPc,jdbcType=VARCHAR},
+      </if>
+      <if test="levelMc != null">
+        level_MC = #{levelMc,jdbcType=VARCHAR},
+      </if>
+      <if test="levelHr != null">
+        level_HR = #{levelHr,jdbcType=VARCHAR},
+      </if>
+      <if test="levelPur != null">
+        level_PUR = #{levelPur,jdbcType=VARCHAR},
+      </if>
+      <if test="levelSales != null">
+        level_SALES = #{levelSales,jdbcType=VARCHAR},
+      </if>
+      <if test="levelRd != null">
+        level_RD = #{levelRd,jdbcType=VARCHAR},
+      </if>
+      <if test="levelRma != null">
+        level_RMA = #{levelRma,jdbcType=VARCHAR},
+      </if>
+      <if test="levelFna != null">
+        level_FNA = #{levelFna,jdbcType=VARCHAR},
+      </if>
+      <if test="levelCost != null">
+        level_COST = #{levelCost,jdbcType=VARCHAR},
+      </if>
+      <if test="levelOther != null">
+        level_OTHER = #{levelOther,jdbcType=VARCHAR},
+      </if>
+      <if test="levelMis != null">
+        level_MIS = #{levelMis,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePhoto != null">
+        employee_PHOTO = #{employeePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedBy != null">
+        last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeIp != null">
+        employee_ip = #{employeeIp,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeOnjobDate != null">
+        employee_onjob_date = #{employeeOnjobDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeePhone != null">
+        EMPLOYEE_PHONE = #{employeePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeExperience != null">
+        employee_EXPERIENCE = #{employeeExperience,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.scd.wechat.entity.Employee">
+    update employee
+    set EMPLOYEE_CODE = #{employeeCode,jdbcType=VARCHAR},
+      employee_name = #{employeeName,jdbcType=VARCHAR},
+      EMPLOYEE_TITLE = #{employeeTitle,jdbcType=VARCHAR},
+      DEPT_ID = #{deptId,jdbcType=INTEGER},
+      DEPT_LINE = #{deptLine,jdbcType=VARCHAR},
+      ADMIN_ID = #{adminId,jdbcType=INTEGER},
+      EMPLOYEE_INDATE = #{employeeIndate,jdbcType=DATE},
+      EMPLOYEE_DEPT_DATE = #{employeeDeptDate,jdbcType=DATE},
+      EMPLOYEE_OUTDATE = #{employeeOutdate,jdbcType=DATE},
+      EMPLOYEE_SCODE = #{employeeScode,jdbcType=VARCHAR},
+      EMPLOYEE_BIRTH = #{employeeBirth,jdbcType=DATE},
+      EMPLOYEE_SEX = #{employeeSex,jdbcType=VARCHAR},
+      EMPLOYEE_EDUCATION = #{employeeEducation,jdbcType=VARCHAR},
+      EMPLOYEE_STUDY = #{employeeStudy,jdbcType=VARCHAR},
+      EMPLOYEE_PROVINCE = #{employeeProvince,jdbcType=VARCHAR},
+      EMPLOYEE_VOLK = #{employeeVolk,jdbcType=VARCHAR},
+      EMPLOYEE_ADDR = #{employeeAddr,jdbcType=VARCHAR},
+      EMPLOYEE_BID = #{employeeBid,jdbcType=VARCHAR},
+      EMPLOYEE_JOB_DESC = #{employeeJobDesc,jdbcType=VARCHAR},
+      EMPLOYEE_ACCT = #{employeeAcct,jdbcType=VARCHAR},
+      EMPLOYEE_PASSWORD = #{employeePassword,jdbcType=VARCHAR},
+      EMP_EDU_GP1 = #{empEduGp1,jdbcType=VARCHAR},
+      EMP_EDU_GP2 = #{empEduGp2,jdbcType=VARCHAR},
+      EMP_EDU_GP3 = #{empEduGp3,jdbcType=VARCHAR},
+      EMP_EDU_GP4 = #{empEduGp4,jdbcType=VARCHAR},
+      EMP_EDU_GP5 = #{empEduGp5,jdbcType=VARCHAR},
+      EMP_EDU_GP6 = #{empEduGp6,jdbcType=VARCHAR},
+      EMP_EDU_GP7 = #{empEduGp7,jdbcType=VARCHAR},
+      EMP_EDU_GP8 = #{empEduGp8,jdbcType=VARCHAR},
+      EMP_EDU_GP9 = #{empEduGp9,jdbcType=VARCHAR},
+      EMP_EDU_GP10 = #{empEduGp10,jdbcType=VARCHAR},
+      level_GMO = #{levelGmo,jdbcType=VARCHAR},
+      level_PRD = #{levelPrd,jdbcType=VARCHAR},
+      level_ENG = #{levelEng,jdbcType=VARCHAR},
+      level_QC = #{levelQc,jdbcType=VARCHAR},
+      level_PC = #{levelPc,jdbcType=VARCHAR},
+      level_MC = #{levelMc,jdbcType=VARCHAR},
+      level_HR = #{levelHr,jdbcType=VARCHAR},
+      level_PUR = #{levelPur,jdbcType=VARCHAR},
+      level_SALES = #{levelSales,jdbcType=VARCHAR},
+      level_RD = #{levelRd,jdbcType=VARCHAR},
+      level_RMA = #{levelRma,jdbcType=VARCHAR},
+      level_FNA = #{levelFna,jdbcType=VARCHAR},
+      level_COST = #{levelCost,jdbcType=VARCHAR},
+      level_OTHER = #{levelOther,jdbcType=VARCHAR},
+      level_MIS = #{levelMis,jdbcType=VARCHAR},
+      employee_PHOTO = #{employeePhoto,jdbcType=VARCHAR},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR},
+      employee_ip = #{employeeIp,jdbcType=VARCHAR},
+      employee_onjob_date = #{employeeOnjobDate,jdbcType=TIMESTAMP},
+      EMPLOYEE_PHONE = #{employeePhone,jdbcType=VARCHAR},
+      employee_EXPERIENCE = #{employeeExperience,jdbcType=LONGVARCHAR}
+    where EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scd.wechat.entity.Employee">
+    update employee
+    set EMPLOYEE_CODE = #{employeeCode,jdbcType=VARCHAR},
+      employee_name = #{employeeName,jdbcType=VARCHAR},
+      EMPLOYEE_TITLE = #{employeeTitle,jdbcType=VARCHAR},
+      DEPT_ID = #{deptId,jdbcType=INTEGER},
+      DEPT_LINE = #{deptLine,jdbcType=VARCHAR},
+      ADMIN_ID = #{adminId,jdbcType=INTEGER},
+      EMPLOYEE_INDATE = #{employeeIndate,jdbcType=DATE},
+      EMPLOYEE_DEPT_DATE = #{employeeDeptDate,jdbcType=DATE},
+      EMPLOYEE_OUTDATE = #{employeeOutdate,jdbcType=DATE},
+      EMPLOYEE_SCODE = #{employeeScode,jdbcType=VARCHAR},
+      EMPLOYEE_BIRTH = #{employeeBirth,jdbcType=DATE},
+      EMPLOYEE_SEX = #{employeeSex,jdbcType=VARCHAR},
+      EMPLOYEE_EDUCATION = #{employeeEducation,jdbcType=VARCHAR},
+      EMPLOYEE_STUDY = #{employeeStudy,jdbcType=VARCHAR},
+      EMPLOYEE_PROVINCE = #{employeeProvince,jdbcType=VARCHAR},
+      EMPLOYEE_VOLK = #{employeeVolk,jdbcType=VARCHAR},
+      EMPLOYEE_ADDR = #{employeeAddr,jdbcType=VARCHAR},
+      EMPLOYEE_BID = #{employeeBid,jdbcType=VARCHAR},
+      EMPLOYEE_JOB_DESC = #{employeeJobDesc,jdbcType=VARCHAR},
+      EMPLOYEE_ACCT = #{employeeAcct,jdbcType=VARCHAR},
+      EMPLOYEE_PASSWORD = #{employeePassword,jdbcType=VARCHAR},
+      EMP_EDU_GP1 = #{empEduGp1,jdbcType=VARCHAR},
+      EMP_EDU_GP2 = #{empEduGp2,jdbcType=VARCHAR},
+      EMP_EDU_GP3 = #{empEduGp3,jdbcType=VARCHAR},
+      EMP_EDU_GP4 = #{empEduGp4,jdbcType=VARCHAR},
+      EMP_EDU_GP5 = #{empEduGp5,jdbcType=VARCHAR},
+      EMP_EDU_GP6 = #{empEduGp6,jdbcType=VARCHAR},
+      EMP_EDU_GP7 = #{empEduGp7,jdbcType=VARCHAR},
+      EMP_EDU_GP8 = #{empEduGp8,jdbcType=VARCHAR},
+      EMP_EDU_GP9 = #{empEduGp9,jdbcType=VARCHAR},
+      EMP_EDU_GP10 = #{empEduGp10,jdbcType=VARCHAR},
+      level_GMO = #{levelGmo,jdbcType=VARCHAR},
+      level_PRD = #{levelPrd,jdbcType=VARCHAR},
+      level_ENG = #{levelEng,jdbcType=VARCHAR},
+      level_QC = #{levelQc,jdbcType=VARCHAR},
+      level_PC = #{levelPc,jdbcType=VARCHAR},
+      level_MC = #{levelMc,jdbcType=VARCHAR},
+      level_HR = #{levelHr,jdbcType=VARCHAR},
+      level_PUR = #{levelPur,jdbcType=VARCHAR},
+      level_SALES = #{levelSales,jdbcType=VARCHAR},
+      level_RD = #{levelRd,jdbcType=VARCHAR},
+      level_RMA = #{levelRma,jdbcType=VARCHAR},
+      level_FNA = #{levelFna,jdbcType=VARCHAR},
+      level_COST = #{levelCost,jdbcType=VARCHAR},
+      level_OTHER = #{levelOther,jdbcType=VARCHAR},
+      level_MIS = #{levelMis,jdbcType=VARCHAR},
+      employee_PHOTO = #{employeePhoto,jdbcType=VARCHAR},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR},
+      employee_ip = #{employeeIp,jdbcType=VARCHAR},
+      employee_onjob_date = #{employeeOnjobDate,jdbcType=TIMESTAMP},
+      EMPLOYEE_PHONE = #{employeePhone,jdbcType=VARCHAR}
+    where EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 上面为插件自动生成（可忽略），下面为手动编写 -->
+  <!-- 获取数据总条数 -->
+  <select id="employeeCount" resultType="Integer">
+  	select count(*) from employee
+  </select>
+  
+  <!-- 根据页数和条数进行分页获取数据 -->
+  <select id="selectByPage" parameterType="Integer" resultMap="BaseResultMap">
+  	select * from employee limit #{pageindex},#{limit}
+  </select>
+  
+  <!-- 根据scode字段S4M10880->10880查找员工 -->
+  <select id="selectByScode" parameterType="String" resultMap="BaseResultMap">
+  	select * from employee where EMPLOYEE_SCODE=#{scode}
+  </select>
+  
+  <!-- 根据微信openID查找员工 -->
+  <select id="selectByOpenID" parameterType="String" resultMap="BaseResultMap">
+  	select * from employee where employee_wechatid=#{code}
+  </select>
+  
+  <!-- 插入openID -->
+  <update id="insertOpenID">
+  	update employee set employee_wechatid=#{openId} where EMPLOYEE_SCODE=#{employeeId}
+  </update>
+</mapper>

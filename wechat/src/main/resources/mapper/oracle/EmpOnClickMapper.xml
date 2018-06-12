@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scd.wechat.mapper.oracle.EmpOnClickMapper">
+  <resultMap id="BaseResultMap" type="com.scd.wechat.entity.EmpOnClick">
+    <id column="EMP_ONCLICK_ID" jdbcType="INTEGER" property="EMP_ONCLICK_ID" />
+    <result column="EMP_ONCLICK_CODE" jdbcType="VARCHAR" property="EMP_ONCLICK_CODE" />
+    <result column="EMP_ONCLICK_TIME" jdbcType="DATE" property="EMP_ONCLICK_TIME" />
+    <result column="ATTRIBUTE01" jdbcType="VARCHAR" property="ATTRIBUTE01" />
+    <result column="ATTRIBUTE02" jdbcType="VARCHAR" property="ATTRIBUTE02" />
+    
+  </resultMap>
+  
+</mapper>

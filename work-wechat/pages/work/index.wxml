@@ -1,0 +1,35 @@
+<!--index.wxml-->
+
+<view class="container">
+<view style='margin-top:50px;'>  
+    <text class="user-motto">{{motto}}</text>   
+  </view>
+  <view>
+    <text class='user_motto'>{{use}}</text>
+  </view>
+  
+  <view style='margin-top:20px'>
+    <text wx:if="{{msg=='success'}}">{{employeeName}}</text>
+  </view>
+  <view style='margin-top:30px;'>
+  <text wx:if="{{msg=='successb'}}" style='color:green;'>微信绑定成功</text>
+  <text wx:elif="{{msg=='failb'}}" style='color:red;'>微信绑定失败</text>
+    <text wx:if="{{msg=='success'}}" style='color:green;'>打卡成功</text>
+    <text wx:elif="{{msg=='fail'}}" style='color:red;'>打卡失败,请重新尝试</text>
+    <text wx:elif="{{msg=='fail1'}}" style='color:red;'>未绑定工号，请重新输入工号！</text>
+  </view>
+  
+    <view style='margin-top:20px;'>
+    <text wx:if="{{tips!=''}}" style='color:red'>{{tips}}</text>
+  </view> 
+  <text wx:if="{{tips1!=''}}" style='color:red'>{{tips1}}</text>
+  <view style='margin-top:50px;'>
+    <button bindtap="openScanCode">开始扫码</button>
+    <button  bindtap='confirm2'>绑定微信</button>
+    
+  </view>
+  
+  <modal hidden="{{hiddenmodalput}}" title="输入您的工号（后五位数字）" confirm-text="提交" bindcancel="cancel" bindconfirm="confirm" no-cancel="true">  
+    <input type='text'placeholder="请输入您的工号" auto-focus bindinput='employeeIdinput'/>  
+</modal>
+</view>

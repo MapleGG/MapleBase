@@ -1,0 +1,54 @@
+table {
+	/* text */
+	font-family: "Arial","Sans-Serif","ËÎÌו";
+        /* back */
+        background-color:#FFFFFF;
+}
+thead tr th,
+thead tr td
+{
+	/* appearance */
+	background-color: #0000AA;
+	/* text */
+	color: #FFFFFF;
+	font-size: 14px;
+        text-align:center;
+	font-weight: bold;
+        /* appearance */
+	border: 1px solid #EAEAEA;
+	padding: 2px;
+}
+tbody td {
+	/* appearance */
+	solid #EAEAEA;
+	/* size */
+	padding: 2px;
+        font-size: 12px;
+}
+
+.myTable thead tr th,
+.myTable thead tr td
+{
+	/* appearance */
+	background-color: #0000AA;
+	/* text */
+	color: #FFFFFF;
+	font-size: 14px;
+        text-align:center;
+	font-weight: bold;
+        /* appearance */
+	border: 1px solid #EAEAEA;
+	padding: 4px;
+}
+.myTable td {
+	/* appearance */
+	solid #EAEAEA;
+	/* size */
+	padding: 2px;
+        font-size: 12px;
+}
+.myTable {
+	/* text */
+	font-family: "Arial","Sans-Serif","ËÎÌו";
+}
+

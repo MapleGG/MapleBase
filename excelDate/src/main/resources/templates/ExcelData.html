@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta name="viewport"   content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-cache"></meta>
+	<meta http-equiv="expries" content="-1" ></meta>
+	<meta http-equiv="pragma" content="no-cache"></meta>
+<title>ExcelData</title>
+<script src="js/jquery-1.10.1.min.js" type="text/javascript"/>
+<link rel="stylesheet" href="./layui/css/layui.css" media="all"/>
+
+<script src="./layui/layui.js"/>
+<style type="text/css">
+#test10{
+	position: absolute;
+	height:80%;
+}
+#test10 i{
+	position: absolute;
+     margin-top: 10%;
+   
+}
+#test10 p{
+	position: absolute;
+    left: 46%;
+    margin-top: 15%;
+}
+html,body{overflow: hidden;}
+</style>
+</head>
+<script>
+layui.use('upload', function(){
+	  var $ = layui.jquery
+	  ,upload = layui.upload;
+//选完文件后不自动上传
+upload.render({
+  elem: '#test8'
+  ,url: './test'
+  ,accept : 'file'
+  ,auto: false
+  //,multiple: true
+  ,bindAction: '#test9'
+  ,done: function(res){
+   // console.log(res)
+   layer.msg("添加"+res.data)
+  }
+});
+
+//拖拽上传
+upload.render({
+  elem: '#test10',
+  accept : 'file'
+  ,url: './test'
+  ,size:'2004800' //kb
+ ,done: function(res){
+    //console.log(res)
+    layer.msg("添加"+res.data)
+  }
+});
+})
+</script>
+<body style="width: 100%;height: 100%;">
+	<!-- <div class="layui-upload">
+	  <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
+	  <button type="button" class="layui-btn" id="test9">开始上传</button>
+	</div> -->
+	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	  <legend>拖拽或点击选择文件</legend>
+	</fieldset> 
+	 
+	<div class="layui-upload-drag" style="width:95%;border:1px solid;" id="test10">
+	  <i class="layui-icon"></i>
+	  <p>点击上传，或将文件拖拽到此处</p>
+	</div>
+	 
+</body>
+</html>
